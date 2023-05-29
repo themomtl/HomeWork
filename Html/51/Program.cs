@@ -11,6 +11,8 @@
         {
             List<string> colors = new List<string> {"Red","Green","Blue"};
             List<string> types = new List<string> { "Stripes", "plain", "Checked" };
+
+            //Way One 
             for (int i = 0; i < colors.Count; i++)
             {
                 for (int j = 0; j < types.Count; j++)
@@ -18,6 +20,7 @@
                     new ColorMatch(colors[i], types[j]);
                 }
             }
+            //Way Two
             new ColorMatch(colors, types);
         }
     }
