@@ -1,4 +1,6 @@
-﻿namespace HW_51
+﻿using System.Linq;
+
+namespace HW_51
 {
     internal class Program
     {
@@ -9,42 +11,41 @@
 
         public Program()
         {
-            List<string> colors = new List<string> {"Red","Green","Blue"};
+            List<string> colors = new List<string> { "Red", "Green", "Blue" };
             List<string> types = new List<string> { "Stripes", "plain", "Checked" };
+            List<Shirt> shirts = new List<Shirt>();
 
-            //Way One 
+
             for (int i = 0; i < colors.Count; i++)
             {
                 for (int j = 0; j < types.Count; j++)
                 {
-                    new ColorMatch(colors[i], types[j]);
+                    shirts.Add(new Shirt(colors[i], types[j]));
                 }
             }
-            //Way Two
-            new ColorMatch(colors, types);
+            for (int i = 0; i < shirts.Count; i++)
+            {
+                Console.WriteLine(shirts[i]);
+            }
         }
+
     }
-    internal class ColorMatch
+}
+    internal class Shirt
     {
         public string color { get; set; }
         public string type { get; set; }
 
-        public ColorMatch(string color , string type)
+        public Shirt(string color, string types)
         {
             this.color = color;
-            this.type = type;
-            Console.WriteLine($"{this.color}:{this.type}");
+            this.type = types;
         }
-        public ColorMatch(List<string> colors, List<string> types)
-        {
-            for (int i = 0; i < colors.Count; i++)
-            {
-                for (int j = 0; j < types.Count; j++)
-                {
-                    new ColorMatch(colors[i], types[j]);
-                }
-            }
-        }
-
+    public override string ToString()
+    {
+        return $"{color}:{type}";
     }
+
+
+
 }
